@@ -13,7 +13,8 @@ config_version=5
 config/name="tcg_hand_draw_simulator"
 run/main_scene="res://scenes/main_screen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+config/icon="res://icon.png"
 
 [autoload]
 

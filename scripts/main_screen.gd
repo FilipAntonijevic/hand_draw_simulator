@@ -6,6 +6,7 @@ class_name Main_screen extends Node2D
 @onready var import_deck_window = $ImportDeck
 
 func _ready() -> void:
+	DisplayServer.window_set_title("hand_draw_simulator")
 	deck.connect("add_this_card_to_hand", Callable(self, "_on_add_this_card_to_hand"))
 	deck.connect("remove_this_card_from_hand", Callable(self, "_on_remove_this_card_from_hand"))
 	added_hands.connect("this_card_got_removed", Callable(self, "_on_this_card_got_removed"))
