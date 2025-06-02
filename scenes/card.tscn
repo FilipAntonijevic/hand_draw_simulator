@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4lbhriei8qir"]
+
+[ext_resource type="Script" path="res://scripts/card.gd" id="1_uygoj"]
+[ext_resource type="FontFile" uid="uid://ce1y03fbeqox5" path="res://yu-gi-oh-font/yu-gi-oh-matrix.ttf" id="2_0eu04"]
+[ext_resource type="Texture2D" uid="uid://rqahvqu3btmx" path="res://sprites/card_background.jpg" id="2_l5uyg"]
+[ext_resource type="Texture2D" uid="uid://cy0osy3e14cv8" path="res://sprites/minus.png" id="3_clbg3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5c3ek"]
+font = ExtResource("2_0eu04")
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_uygoj")
+
+[node name="Card_name_label" type="Label" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 0
+offset_right = 169.0
+offset_bottom = 30.0
+label_settings = SubResource("LabelSettings_5c3ek")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="remove_card_button" type="Button" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 170.0
+offset_right = 700.0
+offset_bottom = 520.0
+scale = Vector2(0.057, 0.057)
+focus_mode = 0
+text = "-"
+icon = ExtResource("3_clbg3")
+flat = true
+
+[node name="CardBackground" type="Sprite2D" parent="."]
+position = Vector2(100, 15.125)
+scale = Vector2(0.772201, 0.15335)
+texture = ExtResource("2_l5uyg")
+
+[node name="choose_this_card_button" type="Button" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 0
+offset_right = 169.0
+offset_bottom = 30.0
+focus_mode = 0
+flat = true
+
+[connection signal="mouse_entered" from="remove_card_button" to="." method="_on_remove_card_button_mouse_entered"]
+[connection signal="mouse_exited" from="remove_card_button" to="." method="_on_remove_card_button_mouse_exited"]
+[connection signal="pressed" from="remove_card_button" to="." method="_on_remove_card_button_pressed"]
+[connection signal="mouse_entered" from="choose_this_card_button" to="." method="_on_choose_this_card_button_mouse_entered"]
+[connection signal="mouse_exited" from="choose_this_card_button" to="." method="_on_choose_this_card_button_mouse_exited"]
+[connection signal="pressed" from="choose_this_card_button" to="." method="_on_choose_this_card_button_pressed"]
+[connection signal="toggled" from="choose_this_card_button" to="." method="_on_choose_this_card_button_toggled"]

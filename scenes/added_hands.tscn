@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcjeoc5ftt0i6"]
+
+[ext_resource type="Script" path="res://scripts/added_hands.gd" id="1_w0ivj"]
+[ext_resource type="FontFile" uid="uid://d1i0jxno7snjn" path="res://yu-gi-oh-font/yu-gi-oh-matrix-bold.ttf" id="2_txw1a"]
+[ext_resource type="Texture2D" uid="uid://bo6kt20ggmwd" path="res://sprites/add_button.png" id="3_a545p"]
+[ext_resource type="FontFile" uid="uid://ce1y03fbeqox5" path="res://yu-gi-oh-font/yu-gi-oh-matrix.ttf" id="3_rslps"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7wexx"]
+font = ExtResource("2_txw1a")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_11vh3"]
+font = ExtResource("3_rslps")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6s5dx"]
+font = ExtResource("3_rslps")
+
+[node name="AddedHands" type="Node2D"]
+script = ExtResource("1_w0ivj")
+
+[node name="added_hands_background" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 7.0
+offset_top = 133.0
+offset_right = 669.0
+offset_bottom = 713.0
+color = Color(0.470588, 0.372549, 0.27451, 1)
+
+[node name="background" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 675.0
+offset_bottom = 719.0
+color = Color(0.270588, 0.243137, 0.215686, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 9.0
+offset_right = 159.0
+offset_bottom = 50.0
+text = "Good hands:"
+label_settings = SubResource("LabelSettings_7wexx")
+vertical_alignment = 1
+
+[node name="add_hand_button" type="Button" parent="."]
+offset_left = 635.0
+offset_top = 56.0
+offset_right = 1169.0
+offset_bottom = 576.0
+scale = Vector2(0.06, 0.06)
+text = "+"
+icon = ExtResource("3_a545p")
+flat = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 50)
+offset_left = 11.0
+offset_top = 136.0
+offset_right = 665.0
+offset_bottom = 709.0
+vertical_scroll_mode = 3
+
+[node name="Hand_container" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 7.0
+offset_top = 50.0
+offset_right = 627.0
+offset_bottom = 89.0
+color = Color(1.54018e-06, 0.606119, 0.607741, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 619.0
+offset_bottom = 39.0
+horizontal_scroll_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/ScrollContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="."]
+offset_left = 626.0
+offset_top = 99.0
+offset_right = 670.0
+offset_bottom = 123.0
+focus_mode = 0
+flat = true
+
+[node name="autodelete_on_hand_submision_label" type="Label" parent="."]
+offset_left = 430.0
+offset_top = 104.0
+offset_right = 651.0
+offset_bottom = 127.0
+text = "autodelete on hand submision:"
+label_settings = SubResource("LabelSettings_11vh3")
+
+[node name="number_of_good_hands_label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 104.0
+offset_right = 171.0
+offset_bottom = 127.0
+text = "Number of good hands: 0 "
+label_settings = SubResource("LabelSettings_6s5dx")
+
+[connection signal="mouse_entered" from="add_hand_button" to="." method="_on_add_hand_button_mouse_entered"]
+[connection signal="mouse_exited" from="add_hand_button" to="." method="_on_add_hand_button_mouse_exited"]
+[connection signal="pressed" from="add_hand_button" to="." method="_on_add_hand_button_pressed"]
+[connection signal="button_down" from="CheckButton" to="." method="_on_check_button_button_down"]
+[connection signal="button_up" from="CheckButton" to="." method="_on_check_button_button_up"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

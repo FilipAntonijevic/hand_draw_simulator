@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://pgm51flprm73"]
+
+[ext_resource type="Script" path="res://scripts/import_deck.gd" id="1_m1tsh"]
+[ext_resource type="FontFile" uid="uid://d1i0jxno7snjn" path="res://yu-gi-oh-font/yu-gi-oh-matrix-bold.ttf" id="2_gkpte"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q7kvn"]
+font = ExtResource("2_gkpte")
+font_size = 30
+
+[node name="ImportDeck" type="Node2D"]
+script = ExtResource("1_m1tsh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 20.0
+offset_right = 1060.0
+offset_bottom = 256.0
+color = Color(0.187651, 0.174381, 0.157957, 1)
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 46.0
+offset_top = 85.0
+offset_right = 1035.0
+offset_bottom = 142.0
+
+[node name="import_deck_button" type="Button" parent="."]
+offset_left = 296.0
+offset_top = 170.0
+offset_right = 535.0
+offset_bottom = 232.0
+text = "ok
+"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 395.0
+offset_top = 34.0
+offset_right = 934.0
+offset_bottom = 86.0
+text = "Enter your YDK code:"
+label_settings = SubResource("LabelSettings_q7kvn")
+
+[node name="cancel_button" type="Button" parent="."]
+offset_left = 547.0
+offset_top = 171.0
+offset_right = 786.0
+offset_bottom = 233.0
+text = "cancel
+"
+
+[connection signal="pressed" from="import_deck_button" to="." method="_on_import_deck_button_pressed"]
+[connection signal="pressed" from="cancel_button" to="." method="_on_cancel_button_pressed"]

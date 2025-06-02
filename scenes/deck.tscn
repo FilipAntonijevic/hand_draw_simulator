@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmeenjxx488s4"]
+
+[ext_resource type="Script" path="res://scripts/deck.gd" id="1_r0hbe"]
+[ext_resource type="FontFile" uid="uid://d1i0jxno7snjn" path="res://yu-gi-oh-font/yu-gi-oh-matrix-bold.ttf" id="2_kux1x"]
+[ext_resource type="Texture2D" uid="uid://bo6kt20ggmwd" path="res://sprites/add_button.png" id="3_ftpdi"]
+[ext_resource type="FontFile" uid="uid://ce1y03fbeqox5" path="res://yu-gi-oh-font/yu-gi-oh-matrix.ttf" id="3_lmol5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4cy4h"]
+font = ExtResource("2_kux1x")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_p6icx"]
+font = ExtResource("3_lmol5")
+font_size = 18
+
+[node name="Deck" type="Node2D"]
+script = ExtResource("1_r0hbe")
+
+[node name="deck_background" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 7.0
+offset_top = 165.0
+offset_right = 211.0
+offset_bottom = 714.0
+color = Color(0.471753, 0.372107, 0.27384, 1)
+
+[node name="background" type="ColorRect" parent="."]
+z_index = -2
+offset_right = 217.0
+offset_bottom = 720.0
+color = Color(0.271654, 0.243192, 0.215242, 1)
+
+[node name="Deck_label" type="Label" parent="."]
+offset_left = 11.0
+offset_right = 92.0
+offset_bottom = 50.0
+text = "Deck:"
+label_settings = SubResource("LabelSettings_4cy4h")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="card_textbox" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(165, 0)
+offset_left = 7.0
+offset_top = 96.0
+offset_right = 177.0
+offset_bottom = 133.0
+
+[node name="Card_container" type="ScrollContainer" parent="."]
+offset_left = 9.0
+offset_top = 167.0
+offset_right = 209.0
+offset_bottom = 713.0
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Card_container"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+offset_left = 181.0
+offset_top = 100.0
+offset_right = 715.0
+offset_bottom = 620.0
+scale = Vector2(0.06, 0.06)
+focus_mode = 0
+text = "+"
+icon = ExtResource("3_ftpdi")
+flat = true
+
+[node name="cards_in_deck_label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 141.0
+offset_right = 192.0
+offset_bottom = 164.0
+text = "cards in deck: 0"
+label_settings = SubResource("LabelSettings_p6icx")
+
+[connection signal="text_submitted" from="card_textbox" to="." method="_on_card_textbox_text_submitted"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

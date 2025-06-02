@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlv2cyaetkxq3"]
+
+[ext_resource type="Script" path="res://scripts/hand.gd" id="1_aj0e4"]
+[ext_resource type="Texture2D" uid="uid://cy0osy3e14cv8" path="res://sprites/minus.png" id="2_kdjya"]
+
+[node name="Hand" type="Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_aj0e4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 0
+offset_top = 4.0
+offset_right = 653.0
+offset_bottom = 44.0
+color = Color(1.54018e-06, 0.606119, 0.607741, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 611.0
+offset_bottom = 35.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/ScrollContainer"]
+layout_mode = 2
+
+[node name="remove_hand" type="Button" parent="."]
+layout_mode = 0
+offset_left = 612.0
+offset_top = 4.0
+offset_right = 1142.0
+offset_bottom = 524.0
+scale = Vector2(0.077, 0.077)
+focus_mode = 0
+text = "-"
+icon = ExtResource("2_kdjya")
+flat = true
+
+[connection signal="mouse_entered" from="remove_hand" to="." method="_on_remove_hand_mouse_entered"]
+[connection signal="mouse_exited" from="remove_hand" to="." method="_on_remove_hand_mouse_exited"]
+[connection signal="pressed" from="remove_hand" to="." method="_on_remove_hand_pressed"]

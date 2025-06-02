@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy7xtnv2oqe1j"]
+
+[ext_resource type="Script" path="res://scripts/card_in_hand.gd" id="1_mmy2o"]
+[ext_resource type="Texture2D" uid="uid://rqahvqu3btmx" path="res://sprites/card_background.jpg" id="2_4fe3u"]
+[ext_resource type="FontFile" uid="uid://ce1y03fbeqox5" path="res://yu-gi-oh-font/yu-gi-oh-matrix.ttf" id="2_ejerr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndg2c"]
+font = ExtResource("2_ejerr")
+
+[node name="CardInHand" type="Control"]
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 136.0
+script = ExtResource("1_mmy2o")
+
+[node name="card_name" type="Label" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 1.0
+offset_right = 135.0
+offset_bottom = 29.0
+label_settings = SubResource("LabelSettings_ndg2c")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="CardBackground" type="Sprite2D" parent="."]
+position = Vector2(68, 14.375)
+scale = Vector2(0.514479, 0.148196)
+texture = ExtResource("2_4fe3u")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 135.0
+offset_bottom = 29.0
+focus_mode = 0
+flat = true
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
